@@ -5,20 +5,21 @@
         <div class="col-3 bg-dark vh-100">
             <HistorySection/>
         </div>
-    </div>
-    <div class="col-9 bg-gray">
-        <div class="d-flex flex-column vh-100">
-            <div style="height: 100px;">
-                <RequestMethodUrl/>
+        <div class="col-9 bg-gray">
+            <div class="d-flex flex-column vh-100">
+                <div style="height: 100px;">
+                    <RequestMethodUrl/>
+                </div>
+                <div class="d-grid" style="height: calc(100vh - 100px); grid-template-rows: 50% 50%;">
+                    <div class="">
+                        <RequestParamsSection />
+                    </div>
+                    <div class="bg-warning">
+                        <ResponseSection />
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="d-grid" style="height: calc(100vh - 100px); grid-template-rows: 50% 50%;" >
-            <div class="bg-primary">
-                <RequestParamsSection/>
-            </div>
-            <div class="bg-warning">
-                <ResponseSection/>
-            </div>
-        </div>
     </div>
+
 </div>

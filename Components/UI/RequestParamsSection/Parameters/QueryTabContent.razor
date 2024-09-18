@@ -1,0 +1,29 @@
+﻿<span class="text-white-50 d-block">
+    Query string parameters
+</span>
+<ul class="m-0 p-0">
+    @for (var i = 0; i < _queryParameters.Count; i++)
+    {
+        var queryParameters = _queryParameters[i];
+        <li class="d-flex gap-1 my-2">
+            <input type="text" placeholder="Key" class="form-control bg-black text-white-50 border-dark " />
+            <input type="text" placeholder="Value" class="form-control bg-black text-white-50 border-dark " />
+            <button type="button" class="btn btn-sm btn-danger" @onclick="()=> DeleteParam(queryParameters)">DELETE</button>
+        </li>
+    }
+</ul>
+<div class="d-flex align-items-center w-100">
+    <hr class="bg-black" style="width: calc(50% - 50px); height: 2px;"/>
+    <button type="button" class="btn btn-sm btn-outline-dark text-white" style="width:100px;"
+       @onclick="AddParam" >
+        + Add
+    </button>
+    <hr class="bg-black" style="width: calc(50% - 50px); height: 2px;" />
+</div>
+
+@code {
+    private List<KeyValueModel> _queryParameters = [new(), new()];
+
+    private void AddParam() => _queryParameters.Add(new());
+    private void DeleteParam(KeyValueModel queryParameter) => _queryParameters.Remove(queryParameter);
+}

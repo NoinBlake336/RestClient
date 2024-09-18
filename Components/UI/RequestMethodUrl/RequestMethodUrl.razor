@@ -1,16 +1,47 @@
-<div class="d-flex justify-center-between align-items-center">
+<div class="d-flex justify-content-between  align-items-center w-100">
     <h6 class="my-3 text-white-50 fw-bold">Untitled Request</h6>
     <button type="button" class="btn btn-sm btn-warning">New Request</button>
 </div>
 <div class="input-group">
-    <button type="button" class="btn btn-dark bg-black dropdown-toggle">GET</button>
-    <ul class="dropdown-menu">
-        
+    <button 
+        type="button" 
+        class="btn btn-dark bg-black dropdown-toggle text-start
+        @(_methodDropdownShown ? "show" : "")"
+        aria-expanded="@(_methodDropdownShown ? "true": "false")"
+        @onclick="ToggleMethodDropdown"
+        style="width: 120px;">
+        @_selectedMethod
+    </button>
+    <ul class="dropdown-menu @(_methodDropdownShown ? "show": "")"
+        style="@(_methodDropdownShown ? "position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(0px, 39px, 0px);" : " ")">
+        <li>
+            <button type="button" class="dropdown-item" @onclick="@(() => SetSelectedmethod("GET"))">GET</button>
+        </li>
+        <li>
+            <button type="button" class="dropdown-item" @onclick="@(() => SetSelectedmethod("POST"))">POST</button>
+        </li>
+        <li>
+            <button type="button" class="dropdown-item" @onclick="@(() => SetSelectedmethod("PUT"))">PUT</button>
+        </li>
+        <li>
+            <button type="button" class="dropdown-item" @onclick="@(() => SetSelectedmethod("PATCH"))">PATCH</button>
+        </li>
+        <li>
+            <button type="button" class="dropdown-item" @onclick="@(() => SetSelectedmethod("DELETE"))">DELETE</button>
+        </li>
     </ul>
     <input type="text" name="" id="" class="form-control bg-black text-white-50 border-dark" placeholder="Enter/Paste URL">
-    <button type="button" class="btn btn-dark bg-black">GET</button>
+    <button type="button" class="btn btn-dark bg-black">SEND</button>
 </div>
 
 @code{
+    private bool _methodDropdownShown = false;
+    private string? _selectedMethod = "GET";
+    private void ToggleMethodDropdown() => _methodDropdownShown = !_methodDropdownShown;
+    private void SetSelectedmethod(string method)
+    {
+        _selectedMethod = method;
+        _methodDropdownShown = false;
 
+    }
 }
